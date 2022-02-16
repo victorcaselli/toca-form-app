@@ -1,0 +1,63 @@
+<div class="container h-full">
+  <div class="navbar flex justify-center bg-amber-400">
+    <img src="assets/logo/toca-logo.png">
+  </div>
+
+  <div [formGroup]="data" class="toca-form flex justify-center w-full h-full flex-col">
+    <mat-form-field [formGroup]="data" class="w-full" appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field  class="w-full" appearance="fill">
+      <mat-label>Idade</mat-label>
+      <input formControlName="age" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Data de nascimento</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field  class="w-full" appearance="fill">
+      <mat-label>Endereço</mat-label>
+      <input formControlName="address" matInput>
+    </mat-form-field>
+    <mat-form-field  class="w-full" appearance="fill">
+      <mat-label>Bairro</mat-label>
+      <input formControlName="district" matInput>
+    </mat-form-field>
+    <mat-form-field  class="w-full" appearance="fill">
+      <mat-label>Celular</mat-label>
+      <input formControlName="phone" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>IGREJA: </mat-label>
+      <mat-select formControlName="churchStatus">
+        <mat-option  *ngFor="let church of churchStatusEnum" [value]="church.code">
+          {{church.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>BATISMO: </mat-label>
+      <mat-select formControlName="churchStatus">
+        <mat-option  *ngFor="let christening of christeningEnum" [value]="christening.code">
+          {{christening.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field  class="w-full" appearance="fill">
+      <mat-label>Como conheceu a TOCA? </mat-label>
+      <input formControlName="details" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>HOJE VOCÊ DECIDIU: </mat-label>
+      <mat-select formControlName="decisionType">
+        <mat-option  *ngFor="let decision of decisionEnum" [value]="decision.code">
+          {{decision.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="save()">Save</button>
+  </div>
+</div>
