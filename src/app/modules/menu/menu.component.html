@@ -1,6 +1,6 @@
  <div class="navbar w-full bg-amber-200 flex justify-center">
     <div class="p-2 w-4/6 flex justify-end">
-      <button mat-raised-button>
+      <button routerLink="home" mat-raised-button>
         <img class="w-full w-20" src="assets/logo/toca-logo.png" >
       </button>
     </div>
@@ -9,14 +9,19 @@
        <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
      </button>
      <mat-menu #menu="matMenu">
+       <button routerLink="home" mat-menu-item>
+         <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+         Inicio
+       </button>
        <button mat-menu-item>
          <mat-icon aria-hidden="false" aria-label="Example home icon">list</mat-icon>
          Lista
        </button>
-       <button mat-menu-item>
+       <button routerLink="login" mat-menu-item>
          <mat-icon aria-hidden="false" aria-label="Example home icon">exit_to_app</mat-icon>
          Sair
        </button>
+
      </mat-menu>
    </div>
 

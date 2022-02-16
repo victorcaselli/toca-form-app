@@ -9,9 +9,4 @@ export class AppComponent {
   title = 'toca-form-app';
 
 
-  nome: string = "Victor";
-
-
-  
-
 }
