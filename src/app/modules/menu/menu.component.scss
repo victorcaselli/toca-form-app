@@ -1,0 +1,24 @@
+.bar{
+  background-color: rgb(253 230 138);
+
+  .logo{
+    max-height: 60px;
+    max-width: 60px;
+  }
+
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav, mat-sidenav-content{
+  padding:16px;
+}
+
+mat-sidenav {
+  background-color: red;
+  width:200px;
+}
+
+

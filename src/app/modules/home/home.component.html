@@ -1,9 +1,5 @@
-<div class="container h-full">
-  <div class="navbar flex justify-center bg-amber-400">
-    <img src="assets/logo/toca-logo.png">
-  </div>
-
-  <div [formGroup]="data" class="toca-form flex justify-center w-full h-full flex-col">
+<div class="mt-4 w-full flex justify-center flex-col items-center">
+  <div [formGroup]="data" class="flex justify-center w-80 h-full flex-col ">
     <mat-form-field [formGroup]="data" class="w-full" appearance="fill">
       <mat-label>Nome</mat-label>
       <input formControlName="name" matInput>
@@ -58,6 +54,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button (click)="save()">Save</button>
+    <button mat-raised-button class="bg-amber-400" (click)="save()">Salvar</button>
   </div>
+
 </div>
