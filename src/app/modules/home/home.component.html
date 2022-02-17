@@ -22,10 +22,16 @@
       <mat-label>Bairro</mat-label>
       <input formControlName="district" matInput>
     </mat-form-field>
-    <mat-form-field  class="w-full" appearance="fill">
-      <mat-label>Celular</mat-label>
-      <input formControlName="phone" matInput>
-    </mat-form-field>
+ <div>
+   <mat-form-field  class="w-1/5" appearance="fill">
+     <mat-label>DDD</mat-label>
+     <input formControlName="ddd" matInput>
+   </mat-form-field>
+   <mat-form-field  class="w-9/12 ml-4" appearance="fill">
+     <mat-label>Celular</mat-label>
+     <input formControlName="phone" matInput>
+   </mat-form-field>
+ </div>
     <mat-form-field appearance="fill">
       <mat-label>IGREJA: </mat-label>
       <mat-select formControlName="churchStatus">

@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   christeningStatus: new FormControl(0),
   details: new FormControl(''),
   phone: new FormControl(''),
+  ddd: new FormControl('')
   });
 
   public churchStatusEnum: Enumeration[];
@@ -77,7 +78,14 @@ export class HomeComponent implements OnInit {
 
 
   public save(){
-    const disciple:DisciplePayload = this.data.value
+    const disciple:DisciplePayload = {...this.data.value};
+    let phone:Phone = new Phone();
+    phone.ddd = this.data.value.ddd;
+    phone.number = this.data.value.phone;
+    phone.whatsapp = '0';
+    phone.phoneType = '0';
+    console.log(phone);
+    disciple.phones = [phone];
     this.homeService.save(disciple).subscribe();
 
   }
