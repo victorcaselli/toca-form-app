@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {HomeService} from "./home.service";
 import {Subject} from "rxjs";
 import {DisciplePayload, Enumeration} from "./home.types";
-import {takeUntil} from "rxjs/operators";
-import {DiscipleModel} from "./model/disciple.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Phone} from "./model/phone.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-home',
@@ -34,12 +33,15 @@ export class HomeComponent implements OnInit {
   public decisionEnum: Enumeration[];
   public christeningEnum: Enumeration[];
 
+  public loading:boolean = false;
+
   constructor(
-    private homeService: HomeService
+    private _homeService: HomeService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    // this.homeService._disciple$
+    // this._homeService._disciple$
     //   .pipe(takeUntil(this._unsubscribeAll$))
     //   .subscribe(response => {
     //   if(response === null){
@@ -58,7 +60,7 @@ export class HomeComponent implements OnInit {
     ]
 
     enums.forEach(enumeration => {
-      this.homeService.getEnumeration({param: enumeration})?.subscribe(response => {
+      this._homeService.getEnumeration({param: enumeration})?.subscribe(response => {
         if(enumeration == "church"){
           this.churchStatusEnum = response;
         }
@@ -78,17 +80,36 @@ export class HomeComponent implements OnInit {
 
 
   public save(){
+
+    this.loading = true;
+
     const disciple:DisciplePayload = {...this.data.value};
+
     let phone:Phone = new Phone();
+
     phone.ddd = this.data.value.ddd;
     phone.number = this.data.value.phone;
     phone.whatsapp = '0';
     phone.phoneType = '0';
-    console.log(phone);
+
+
     disciple.phones = [phone];
-    this.homeService.save(disciple).subscribe();
+
+    this.data.reset();
+
+    this._homeService.save(disciple).subscribe(response => {
+      this.loading = false;
+      this.openSaveSnackBar("Salvo com sucesso!");
+    }, error => {
+      this.loading = false;
+      this.openSaveSnackBar("Erro ao salvar")
+    });
 
   }
 
-
+  private  openSaveSnackBar(message:string): void{
+    this._snackBar.open(message, "fechar", {
+      duration: 3000
+    })
+  }
 }

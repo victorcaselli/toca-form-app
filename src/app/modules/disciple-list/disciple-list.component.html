@@ -3,74 +3,80 @@
       <p class="title-text text-sm">Lista de Adolescentes</p>
   </div>
 
+  <div *ngIf="loadingData" class="flex justify-center mt-10 h-screen items-center">
+    <simple-spinner></simple-spinner>
+  </div>
 
-  <mat-accordion *ngFor="let disciple of disciples">
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-  <mat-expansion-panel-header>
-    <mat-panel-title class="flex justify-start w-2/4 panel-name">
-      {{disciple.name}}
-    </mat-panel-title>
-    <mat-panel-description class="flex justify-end w-2/4">
-      {{disciple.phones[0]?.ddd || '' }} {{disciple.phones[0]?.number || 'Sem número cadastrado'}}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-      <div class="w-full flex flex-col">
+  <div class="mt-10" *ngIf="!loadingData">
+    <mat-accordion *ngFor="let disciple of disciples">
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="flex justify-start w-2/4 panel-name">
+            {{disciple.name}}
+          </mat-panel-title>
+          <mat-panel-description class="flex justify-end w-2/4">
+            {{disciple.phones[0]?.ddd || '' }} {{disciple.phones[0]?.number || 'Sem número cadastrado'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="w-full flex flex-col">
 
-        <div class="flex justify-center">
-          <div class="item">
-            <mat-label>Idade</mat-label>
-            <p>{{disciple.age}}</p>
+          <div class="flex justify-center">
+            <div class="item">
+              <mat-label>Idade</mat-label>
+              <p>{{disciple.age}}</p>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="item">
+              <mat-label>Nascimento</mat-label>
+              <p>{{disciple.birthDate | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="item">
+              <mat-label>Endereço</mat-label>
+              <p>{{disciple.address}}</p>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="item">
+              <mat-label>Bairro</mat-label>
+              <p>{{disciple.district}}</p>
+            </div>
           </div>
-          <mat-divider></mat-divider>
-          <div class="item">
-            <mat-label>Nascimento</mat-label>
-            <p>{{disciple.birthDate | date: 'dd/MM/yyyy'}}</p>
+
+          <div class="flex">
+            <div class="item">
+              <mat-label>Igreja</mat-label>
+              <p>{{disciple.churchStatus}}</p>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="item">
+              <mat-label>Batismo</mat-label>
+              <p>{{disciple.christeningStatus}}</p>
+            </div>
+            <div class="item">
+              <mat-label>Como conheceu a toca: </mat-label>
+              <p>{{disciple.details}}</p>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="item">
+              <mat-label>Decisão</mat-label>
+              <p>{{disciple.decisionType}}</p>
+            </div>
           </div>
-          <div class="item">
-            <mat-label>Endereço</mat-label>
-            <p>{{disciple.address}}</p>
-          </div>
-          <mat-divider></mat-divider>
-          <div class="item">
-            <mat-label>Bairro</mat-label>
-            <p>{{disciple.district}}</p>
-          </div>
+
         </div>
+        <div>
+          <button (click)="deleteById(disciple.id)" mat-button>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+            Deletar
+          </button>
+          <button mat-button>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+            Editar
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 
-       <div class="flex">
-         <div class="item">
-           <mat-label>Igreja</mat-label>
-           <p>{{disciple.churchStatus}}</p>
-         </div>
-         <mat-divider></mat-divider>
-         <div class="item">
-           <mat-label>Batismo</mat-label>
-           <p>{{disciple.christeningStatus}}</p>
-         </div>
-         <div class="item">
-           <mat-label>Como conheceu a toca: </mat-label>
-           <p>{{disciple.details}}</p>
-         </div>
-         <mat-divider></mat-divider>
-         <div class="item">
-           <mat-label>Decisão</mat-label>
-           <p>{{disciple.decisionType}}</p>
-         </div>
-       </div>
-
-      </div>
-    <div>
-      <button (click)="deleteById(disciple.id)" mat-button>
-        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
-        Deletar
-      </button>
-      <button mat-button>
-        <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
-        Editar
-      </button>
-    </div>
-    </mat-expansion-panel>
-  </mat-accordion>
 
 </div>

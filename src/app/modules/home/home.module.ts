@@ -10,6 +10,8 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {SpinnerLoadingModule} from "../../components/spinner-loading/spinner-loading.module";
 
 
 
@@ -28,7 +30,9 @@ import {MatButtonModule} from "@angular/material/button";
     MatNativeDateModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
+    SpinnerLoadingModule
   ],
 
 })
