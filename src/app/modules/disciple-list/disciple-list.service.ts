@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Disciple} from "./disciples-list.types";
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class DiscipleListService {
   }
 
   getAll(): Observable<Disciple[]>{
-    return this._http.get<Disciple[]>(`http://localhost:8080/api/disciples`)
+    return this._http.get<Disciple[]>(`${environment.api.main}/api/disciples`)
       .pipe(
         tap((object: Disciple[]) => {
             this._discipleList.next(object)
@@ -31,6 +32,6 @@ export class DiscipleListService {
 
 
   deleteById(id:string): Observable<any>{
-    return this._http.delete(`http://localhost:8080/api/disciples/${id}`)
+    return this._http.delete(`${environment.api.main}/api/disciples/${id}`)
   }
 }

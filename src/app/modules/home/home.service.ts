@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {DisciplePayload, Enumeration, EnumerationParam} from "./home.types";
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class HomeService {
   }
 
   save(data: DisciplePayload): Observable<DisciplePayload>{
-    return this._http.post<DisciplePayload>(`http://localhost:8080/api/disciples`, data)
+    return this._http.post<DisciplePayload>(`${environment.api.main}/api/disciples`, data)
       .pipe(
         tap((object: DisciplePayload) => {
           this._disciple.next(object);
@@ -40,7 +41,7 @@ export class HomeService {
       return;
     }
 
-    return this._http.get<Enumeration[]>(`http://localhost:8080/api/enums?${data.param}=true`)
+    return this._http.get<Enumeration[]>(`${environment.api.main}/api/enums?${data.param}=true`)
       .pipe(
         tap((object:Enumeration[]) =>{
           this._enumeration.next(object);
