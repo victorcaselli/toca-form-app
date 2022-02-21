@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HomeModule } from './modules/home/home.module';
 import {HttpClientModule} from "@angular/common/http";
 import {MenuModule} from "./modules/menu/menu.module";
+import {AuthModule} from "./core/auth/auth.module";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MenuModule} from "./modules/menu/menu.module";
     MatInputModule,
     HomeModule,
     HttpClientModule,
-    MenuModule
+    MenuModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="flex justify-center flex-col mt-10">
+  <img class="w-1/4 self-center" src="assets/logo/toca-logo.png"/>
+  <h2 class="w-full text-center mt-4 text-lg"> TOCA WEB </h2>
+</div>
+
+
+<div [formGroup]="data" class="w-full flex justify-center mt-5">
+  <div class="w-1/2">
+    <mat-form-field  class="w-full" appearance="fill">
+      <mat-label>Usuário</mat-label>
+      <input formControlName="user" matInput>
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input formControlName="password" matInput>
+    </mat-form-field>
+    <button mat-raised-button class="w-full">Entrar</button>
+  </div>
+</div>

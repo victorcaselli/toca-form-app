@@ -1,4 +1,4 @@
- <div class="navbar w-full bg-amber-200 flex justify-center">
+ <div  *ngIf="hiddenMenu()" class="navbar w-full bg-amber-200 flex justify-center">
     <div class="p-2 w-4/6 flex justify-end">
       <button routerLink="home" mat-raised-button>
         <img class="w-full w-20" src="assets/logo/toca-logo.png" >
@@ -25,5 +25,5 @@
      </mat-menu>
    </div>
 
-  </div>
+  </div >
 
