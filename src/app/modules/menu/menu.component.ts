@@ -12,11 +12,17 @@ export class MenuComponent implements OnInit {
     private _authService: AuthService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(
+  ): void {
   }
 
   public hiddenMenu(): boolean{
     return this._authService.isAuthenticated();
+  }
+
+  public logout():void{
+    localStorage.removeItem("token");
+
   }
 
 }

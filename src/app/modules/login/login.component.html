@@ -3,7 +3,7 @@
   <h2 class="w-full text-center mt-4 text-lg"> TOCA WEB </h2>
 </div>
 
-
+<p class="text-center text-red-500 "*ngIf="message.state">{{message.text}}</p>
 <div [formGroup]="data" class="w-full flex justify-center mt-5">
   <div class="w-1/2">
     <mat-form-field  class="w-full" appearance="fill">
@@ -12,8 +12,9 @@
     </mat-form-field>
     <mat-form-field class="w-full" appearance="fill">
       <mat-label>Senha</mat-label>
-      <input formControlName="password" matInput>
+      <input formControlName="password" type="password" matInput>
     </mat-form-field>
-    <button mat-raised-button class="w-full">Entrar</button>
+    <button (click)="login()" mat-raised-button class="w-full">Entrar</button>
   </div>
 </div>
+<spinner-loading *ngIf="loading"></spinner-loading>

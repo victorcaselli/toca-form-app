@@ -7,6 +7,10 @@
     <simple-spinner></simple-spinner>
   </div>
 
+  <div *ngIf="disciples?.length === 0" class="w-full text-center mt-20">
+      <p>Não há adolescentes salvos</p>
+  </div>
+
   <div class="mt-10" *ngIf="!loadingData">
     <mat-accordion *ngFor="let disciple of disciples">
       <mat-expansion-panel (opened)="panelOpenState = true"

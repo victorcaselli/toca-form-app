@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {SpinnerLoadingModule} from "../../components/spinner-loading/spinner-loading.module";
 
 
 
@@ -13,13 +14,14 @@ import {MatButtonModule} from "@angular/material/button";
   declarations: [
     LoginComponent
   ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
-  ]
+    imports: [
+        CommonModule,
+        LoginRoutingModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        SpinnerLoadingModule
+    ]
 })
 export class LoginModule { }
