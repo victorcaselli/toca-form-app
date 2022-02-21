@@ -1,5 +1,5 @@
-<div class="mt-4 w-full flex justify-center flex-col items-center">
-  <div [formGroup]="data" class="flex justify-center w-80 h-full flex-col ">
+<form class="mt-4 w-full flex justify-center flex-col items-center">
+  <div [formGroup]="data" class="flex justify-center w-11/12 h-full flex-col ">
     <mat-form-field [formGroup]="data" class="w-full" appearance="fill">
       <mat-label>Nome</mat-label>
       <input formControlName="name" matInput>
@@ -10,7 +10,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Data de nascimento</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput formControlName="birthDate"  [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -60,7 +60,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button class="bg-amber-400" (click)="save()">Salvar</button>
+    <button type="submit" (click)="save()" mat-raised-button class="bg-amber-400">Salvar</button>
   </div>
   <spinner-loading *ngIf="loading"></spinner-loading>
-</div>
+</form>

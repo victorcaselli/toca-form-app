@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HomeService} from "./home.service";
 import {Subject} from "rxjs";
 import {DisciplePayload, Enumeration} from "./home.types";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Phone} from "./model/phone.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -80,6 +80,10 @@ export class HomeComponent implements OnInit {
 
 
   public save(){
+
+    if(!this.data.valid){
+        return;
+    }
 
     this.loading = true;
 
