@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="header w-full flex justify-center flex-col">
+    <img class="w-1/4 self-center" src="assets/logo/toca-logo.png"/>
+      <div class="text-center">
+        <h2>Bem vindo visitante </h2>
+      </div>
+  </div>
+
+  <div class="form">
+  <form class="mt-4 w-full flex justify-center flex-col items-center">
+    <div [formGroup]="data" class="flex justify-center w-11/12 h-full flex-col ">
+      <mat-form-field [formGroup]="data" class="w-full" appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input formControlName="name" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput formControlName="birthDate"  [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+        <mat-form-field  appearance="fill">
+          <mat-label>Celular</mat-label>
+          <input formControlName="phone" matInput>
+        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Como chegou aqui? </mat-label>
+        <mat-select formControlName="visitorType">
+          <mat-option  *ngFor="let visitor of visitorType" [value]="visitor.code">
+            {{visitor.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="options flex flex-col">
+        <button type="submit" (click)="save()" mat-raised-button class="bg-amber-400">Salvar</button>
+        <button routerLink="/login" mat-raised-button class="bg-amber-200">Acessar</button>
+      </div>
+    </div>
+    <spinner-loading *ngIf="loading"></spinner-loading>
+  </form>
+  </div>
+</div>

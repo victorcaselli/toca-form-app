@@ -14,7 +14,8 @@
       <mat-label>Senha</mat-label>
       <input formControlName="password" type="password" matInput>
     </mat-form-field>
-    <button (click)="login()" mat-raised-button class="w-full">Entrar</button>
+    <button (click)="login()" mat-raised-button class="w-full bg-amber-400">Entrar</button>
+    <button routerLink="/visitor" mat-raised-button class="w-full" style="margin-top: 15px">Para visitantes</button>
   </div>
 </div>
 <spinner-loading *ngIf="loading"></spinner-loading>

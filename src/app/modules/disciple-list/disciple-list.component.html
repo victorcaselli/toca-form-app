@@ -3,7 +3,23 @@
       <p class="title-text text-sm">Lista de Adolescentes</p>
   </div>
 
-  <div *ngIf="loadingData" class="flex justify-center mt-10 h-screen items-center">
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>PESQUISAR POR NOME</mat-label>
+    <input (change)="getAllDisciples()" matInput type="text" [(ngModel)]="searchData">
+    <button *ngIf="searchData" matSuffix mat-icon-button aria-label="Clear" (click)="searchData=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Paramêtro de pesquisa</mat-label>-->
+<!--    <mat-select  *ngFor="let param of searchParams" [(ngModel)]="params">-->
+<!--      <mat-option  [value]="param.code">-->
+<!--        {{param.text}}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
+
+  <div *ngIf="loadingData" class="flex justify-center mt-10 h-screen items-top">
     <simple-spinner></simple-spinner>
   </div>
 

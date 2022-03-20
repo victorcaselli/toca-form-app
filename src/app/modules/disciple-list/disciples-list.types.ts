@@ -19,3 +19,9 @@ export interface Phone {
   phoneType: string,
   whatsapp: string,
 }
+
+
+export interface SearchParams {
+  code: string,
+  text: string
+}

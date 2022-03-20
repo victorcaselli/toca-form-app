@@ -7,11 +7,13 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {environment} from "../../../environments/environment";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() {}
+
+  constructor(private _authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(request.url.includes("/oauth/token")){
@@ -25,7 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
       })
 
 
-    }else{
+    }else if(!request.url.includes("enums/visitors") && this._authService.isAuthenticated()) {
       const token: string = "Bearer "+localStorage.getItem('token');
 
       request = request.clone({

@@ -20,8 +20,8 @@ export class DiscipleListService {
     return this._discipleList.asObservable();
   }
 
-  getAll(): Observable<Disciple[]>{
-    return this._http.get<Disciple[]>(`${environment.api.main}/api/disciples`)
+  getAll(searchData: string): Observable<Disciple[]>{
+    return this._http.get<Disciple[]>(`${environment.api.main}/api/disciples/search?name=${searchData}`)
       .pipe(
         tap((object: Disciple[]) => {
             this._discipleList.next(object)

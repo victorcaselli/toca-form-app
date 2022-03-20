@@ -10,6 +10,7 @@ import { HomeModule } from './modules/home/home.module';
 import {HttpClientModule} from "@angular/common/http";
 import {MenuModule} from "./modules/menu/menu.module";
 import {AuthModule} from "./core/auth/auth.module";
+import {VisitorModule} from "./modules/visitor/visitor.module";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {AuthModule} from "./core/auth/auth.module";
     HomeModule,
     HttpClientModule,
     MenuModule,
-    AuthModule
+    AuthModule,
+    VisitorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

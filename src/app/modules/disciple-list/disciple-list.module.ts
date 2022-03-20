@@ -10,6 +10,8 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {SimpleSpinnerModule} from "../../components/simple-spinner/simple-spinner.module";
 import {CommonDialogModule} from "../../components/common-dialog/common-dialog.module";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -17,17 +19,19 @@ import {CommonDialogModule} from "../../components/common-dialog/common-dialog.m
   declarations: [
     DiscipleListComponent
   ],
-    imports: [
-        CommonModule,
-        DiscipleListRoutingModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatIconModule,
-        FormsModule,
-        MatDividerModule,
-        MatButtonModule,
-        SimpleSpinnerModule,
-        CommonDialogModule
-    ]
+  imports: [
+    CommonModule,
+    DiscipleListRoutingModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatIconModule,
+    FormsModule,
+    MatDividerModule,
+    MatButtonModule,
+    SimpleSpinnerModule,
+    CommonDialogModule,
+    MatInputModule,
+    MatSelectModule
+  ]
 })
 export class DiscipleListModule { }

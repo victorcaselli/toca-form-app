@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DiscipleListService} from "./disciple-list.service";
-import {Disciple} from "./disciples-list.types";
+import {Disciple, SearchParams} from "./disciples-list.types";
 import {MatDialog} from "@angular/material/dialog";
 import {CommonDialogComponent} from "../../components/common-dialog/common-dialog.component";
 import {Subject} from "rxjs";
@@ -16,6 +16,17 @@ export class DiscipleListComponent implements OnInit {
 
   disciples: Disciple[] | null = [];
 
+  searchData: string = "";
+
+  searchParams: SearchParams[] = [
+    {code: '0', text: 'Nome'},
+    // {code: '1', text: 'Endereço'},
+    // {code: '2', text: 'Data de cadastro'}
+  ]
+
+  params: any;
+
+
   public loadingData:boolean = true;
   private _unsubscribeAll$: Subject<any> = new Subject<any>();
 
@@ -28,11 +39,17 @@ export class DiscipleListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDisciples();
+    this.params = 0;
   }
 
 
   getAllDisciples(): void{
-    this._discipleService.getAll().subscribe();
+
+    if(!this.loadingData){
+        this.loadingData = true;
+    }
+
+    this._discipleService.getAll(this.searchData).subscribe();
     this._discipleService._disciples$
       .pipe(takeUntil(this._unsubscribeAll$))
       .subscribe((disciples: Disciple[] | null) => {
@@ -53,4 +70,5 @@ export class DiscipleListComponent implements OnInit {
       }
     })
   }
+
 }

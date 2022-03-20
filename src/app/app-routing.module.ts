@@ -6,7 +6,8 @@ const routes: Routes = [
   {path: "", redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', loadChildren: () => import("./modules/home/home.module").then(m => m.HomeModule),canActivate:[AuthGuardService] },
   {path: 'login', loadChildren: () => import("./modules/login/login.module").then(m => m.LoginModule)},
-  {path: 'disciple-list', loadChildren: () => import('./modules/disciple-list/disciple-list.module').then(m => m.DiscipleListModule),canActivate:[AuthGuardService] }
+  {path: 'disciple-list', loadChildren: () => import('./modules/disciple-list/disciple-list.module').then(m => m.DiscipleListModule),canActivate:[AuthGuardService] },
+  {path: 'visitor', loadChildren: () => import('./modules/visitor/visitor.module').then(m => m.VisitorModule)}
 ];
 
 @NgModule({
