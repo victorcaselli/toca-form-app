@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MenuModule} from "./modules/menu/menu.module";
 import {AuthModule} from "./core/auth/auth.module";
 import {VisitorModule} from "./modules/visitor/visitor.module";
+import {NgxMaskModule} from "ngx-mask";
 
 
 @NgModule({
@@ -27,7 +28,10 @@ import {VisitorModule} from "./modules/visitor/visitor.module";
     HttpClientModule,
     MenuModule,
     AuthModule,
-    VisitorModule
+    VisitorModule,
+    NgxMaskModule.forRoot(
+      {dropSpecialCharacters: false}
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

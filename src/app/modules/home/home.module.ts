@@ -34,7 +34,7 @@ import {NgxMaskModule} from "ngx-mask";
     MatButtonModule,
     MatSnackBarModule,
     SpinnerLoadingModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forChild()
   ],
 
 })
