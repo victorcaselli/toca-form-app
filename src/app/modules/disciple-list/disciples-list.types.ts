@@ -1,5 +1,5 @@
 export interface Disciple{
-  id: string,
+  id: string ,
   name: string,
   age: string,
   birthDate: string,
@@ -8,7 +8,7 @@ export interface Disciple{
   decisionType: string,
   churchStatus: string,
   christeningStatus: string,
-  phones: Phone[],
+  phone: string,
   details: string
 }
 

@@ -4,6 +4,8 @@ import {VisitorService} from "./visitor.service";
 import {Enumeration, VisitorPayload} from "./visitor.types";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {AuthService} from "../../core/auth/auth.service";
 
 @Component({
   selector: 'app-visitor',
@@ -24,7 +26,9 @@ export class VisitorComponent implements OnInit {
   });
 
   constructor(
-    private _visitorService: VisitorService
+    private _visitorService: VisitorService,
+    private _snackBar: MatSnackBar,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -43,8 +47,28 @@ export class VisitorComponent implements OnInit {
 
 
   save(): void{
+    this.loading = true;
     const visitor: VisitorPayload = {...this.data.value};
-    this._visitorService.save(visitor).subscribe(result => console.log(result));
+    this._visitorService.save(visitor).subscribe(() => {
+      this.loading = false;
+      this.openSaveSnackBar("Salvo com sucesso!");
+      this.data.reset();
+    }, error => {
+      this.loading = false;
+      this.openSaveSnackBar("Erro ao salvar")
+    });
   }
+
+  private  openSaveSnackBar(message:string): void{
+    this._snackBar.open(message, "fechar", {
+      duration: 3000
+    })
+  }
+
+
+  showLogo(): boolean{
+    return this.auth.isAuthenticated();
+  }
+
 
 }

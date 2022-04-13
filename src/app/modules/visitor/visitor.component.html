@@ -1,9 +1,13 @@
 <div class="container">
-  <div class="header w-full flex justify-center flex-col">
+  <div *ngIf="!showLogo()" class="header w-full flex justify-center flex-col">
     <img class="w-1/4 self-center" src="assets/logo/toca-logo.png"/>
       <div class="text-center">
         <h2>Bem vindo visitante </h2>
       </div>
+  </div>
+
+  <div class="w-full flex justify-center flex-col">
+    <p class="text-center"> Visitantes </p>
   </div>
 
   <div class="form">
@@ -15,13 +19,14 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Data de nascimento</mat-label>
-        <input matInput formControlName="birthDate"  [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <!--      <input matInput formControlName="birthDate"  [matDatepicker]="picker">-->
+        <!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+        <!--      <mat-datepicker #picker></mat-datepicker>-->
+        <input formControlName="birthDate"  type="date" matInput>
       </mat-form-field>
         <mat-form-field  appearance="fill">
           <mat-label>Celular</mat-label>
-          <input formControlName="phone" matInput>
+          <input formControlName="phone" mask="(99) 99999-9999" matInput>
         </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Como chegou aqui? </mat-label>

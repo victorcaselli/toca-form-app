@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {CommonDialogComponent} from "../../components/common-dialog/common-dialog.component";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-disciple-list',
@@ -34,7 +35,8 @@ export class DiscipleListComponent implements OnInit {
   constructor(
     private _discipleService: DiscipleListService,
     private _dialog: MatDialog,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -62,13 +64,27 @@ export class DiscipleListComponent implements OnInit {
   }
 
   deleteById(id:string){
+
     this._dialog.open(CommonDialogComponent).afterClosed().subscribe(result => {
       if(result) {
-        this._discipleService.deleteById(id).subscribe(() =>  this.getAllDisciples());
+        this.loadingData = true;
+        this._discipleService.deleteById(id).subscribe(() => {
+          this.getAllDisciples();
+          this.loadingData = false;
+        });
 
         this._changeDetectorRef.markForCheck();
       }
     })
   }
 
+
+  ageCalc(birthDate: string): number{
+    const d: Date = new Date(birthDate);
+    return new Date().getFullYear() - d.getFullYear();
+  }
+
+  edit(disciple: Disciple){
+    this._router.navigate(['/home', {disciple: JSON.stringify(disciple)}])
+  }
 }

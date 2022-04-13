@@ -1,4 +1,3 @@
-import {Phone} from "../home.types";
 
 
 export class DiscipleModel {
@@ -11,8 +10,8 @@ export class DiscipleModel {
   decisionType: string;
   churchStatus: string;
   christeningStatus: string;
-  phones: Phone[];
   details: string;
+  phone: string;
 
   constructor() {
   }

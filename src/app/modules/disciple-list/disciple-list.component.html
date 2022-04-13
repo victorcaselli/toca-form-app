@@ -36,7 +36,7 @@
             {{disciple.name}}
           </mat-panel-title>
           <mat-panel-description class="flex justify-end w-2/4">
-            {{disciple.phones[0]?.ddd || '' }} {{disciple.phones[0]?.number || 'Sem número cadastrado'}}
+            {{disciple?.phone || 'Sem número cadastrado'}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="w-full flex flex-col">
@@ -44,7 +44,7 @@
           <div class="flex justify-center">
             <div class="item">
               <mat-label>Idade</mat-label>
-              <p>{{disciple.age}}</p>
+              <p>{{ageCalc(disciple.birthDate)}}</p>
             </div>
             <mat-divider></mat-divider>
             <div class="item">
@@ -65,12 +65,12 @@
           <div class="flex">
             <div class="item">
               <mat-label>Igreja</mat-label>
-              <p>{{disciple.churchStatus}}</p>
+              <p>{{disciple?.churchStatus}}</p>
             </div>
             <mat-divider></mat-divider>
             <div class="item">
               <mat-label>Batismo</mat-label>
-              <p>{{disciple.christeningStatus}}</p>
+              <p>{{disciple?.christeningStatus}}</p>
             </div>
             <div class="item">
               <mat-label>Como conheceu a toca: </mat-label>
@@ -79,7 +79,7 @@
             <mat-divider></mat-divider>
             <div class="item">
               <mat-label>Decisão</mat-label>
-              <p>{{disciple.decisionType}}</p>
+              <p>{{disciple?.decisionType}}</p>
             </div>
           </div>
 
@@ -89,7 +89,7 @@
             <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
             Deletar
           </button>
-          <button mat-button>
+          <button (click)="edit(disciple)" mat-button>
             <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
             Editar
           </button>

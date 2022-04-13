@@ -12,6 +12,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {SpinnerLoadingModule} from "../../components/spinner-loading/spinner-loading.module";
+import {NgxMaskModule} from "ngx-mask";
 
 
 
@@ -32,7 +33,8 @@ import {SpinnerLoadingModule} from "../../components/spinner-loading/spinner-loa
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
-    SpinnerLoadingModule
+    SpinnerLoadingModule,
+    NgxMaskModule.forRoot()
   ],
 
 })

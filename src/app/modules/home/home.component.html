@@ -4,15 +4,12 @@
       <mat-label>Nome</mat-label>
       <input formControlName="name" matInput>
     </mat-form-field>
-    <mat-form-field  class="w-full" appearance="fill">
-      <mat-label>Idade</mat-label>
-      <input formControlName="age" matInput>
-    </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Data de nascimento</mat-label>
-      <input matInput formControlName="birthDate"  [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+<!--      <input matInput formControlName="birthDate"  [matDatepicker]="picker">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker></mat-datepicker>-->
+      <input formControlName="birthDate"  type="date" matInput>
     </mat-form-field>
     <mat-form-field  class="w-full" appearance="fill">
       <mat-label>Endereço</mat-label>
@@ -23,13 +20,9 @@
       <input formControlName="district" matInput>
     </mat-form-field>
  <div>
-   <mat-form-field  class="w-1/5" appearance="fill">
-     <mat-label>DDD</mat-label>
-     <input formControlName="ddd" matInput>
-   </mat-form-field>
-   <mat-form-field  class="w-9/12 ml-4" appearance="fill">
+   <mat-form-field  class="w-full" appearance="fill">
      <mat-label>Celular</mat-label>
-     <input formControlName="phone" matInput>
+     <input formControlName="phone" matInput mask="(99) 99999-9999">
    </mat-form-field>
  </div>
     <mat-form-field appearance="fill">
@@ -42,7 +35,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>BATISMO: </mat-label>
-      <mat-select formControlName="churchStatus">
+      <mat-select formControlName="christeningStatus">
         <mat-option  *ngFor="let christening of christeningEnum" [value]="christening.code">
           {{christening.description}}
         </mat-option>

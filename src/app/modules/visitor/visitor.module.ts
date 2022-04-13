@@ -12,6 +12,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {SpinnerLoadingModule} from "../../components/spinner-loading/spinner-loading.module";
+import {NgxMaskModule} from "ngx-mask";
 
 
 
@@ -19,20 +20,21 @@ import {SpinnerLoadingModule} from "../../components/spinner-loading/spinner-loa
   declarations: [
     VisitorComponent
   ],
-  imports: [
-    CommonModule,
-    VisitorRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    SpinnerLoadingModule
-  ]
+    imports: [
+        CommonModule,
+        VisitorRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        SpinnerLoadingModule,
+        NgxMaskModule
+    ]
 })
 export class VisitorModule { }

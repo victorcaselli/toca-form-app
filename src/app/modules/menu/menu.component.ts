@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../core/auth/auth.service";
+import {ROLES} from "./menu.keys";
 
 @Component({
   selector: 'app-menu',
@@ -14,6 +15,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(
   ): void {
+    console.log(this._authService.getRoles());
   }
 
   public hiddenMenu(): boolean{
@@ -23,6 +25,17 @@ export class MenuComponent implements OnInit {
   public logout():void{
     localStorage.removeItem("token");
 
+  }
+
+
+  public isAdmin(): boolean{
+    const roles = this._authService.getRoles();
+
+    if(roles){
+      return roles.includes(ROLES.admin);
+    }
+
+    return false;
   }
 
 }
