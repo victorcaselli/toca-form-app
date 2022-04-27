@@ -1,6 +1,6 @@
 export interface VisitorPayload {
     name: string,
-    birthDate: Date,
+    birthDate: string,
     phone: string,
     visitorType: string,
     firstTime: string

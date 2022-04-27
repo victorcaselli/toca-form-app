@@ -1,37 +1,40 @@
  <div  *ngIf="hiddenMenu()" class="navbar w-full bg-amber-200 flex justify-center">
-    <div class="p-2 m-auto">
+    <div class="p-2">
       <button routerLink="home" mat-raised-button>
         <img class="w-full w-20" src="assets/logo/toca-logo.png" >
       </button>
     </div>
-   <div class="flex items-center mr-2">
-     <button  mat-button [matMenuTriggerFor]="menu">
-       <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
-     </button>
-     <mat-menu #menu="matMenu">
-       <button routerLink="home" mat-menu-item>
-         <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-         Inicio
-       </button>
-       <button  routerLink="disciple-list" mat-menu-item>
-         <mat-icon aria-hidden="false" aria-label="Example home icon">list</mat-icon>
-         Lista
-       </button>
-       <button  routerLink="visitor" mat-menu-item>
-         <mat-icon aria-hidden="false" aria-label="Example home icon">perm_identity</mat-icon>
-         Visitantes
-       </button>
-       <button  *ngIf="isAdmin()" routerLink="disciple-list" mat-menu-item>
-         <mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
-         Configurações
-       </button>
-       <button (click)="logout()" routerLink="login" mat-menu-item>
-         <mat-icon aria-hidden="false" aria-label="Example home icon">exit_to_app</mat-icon>
-         Sair
-       </button>
-
-     </mat-menu>
-   </div>
-
   </div >
+ <div class="flex items-center justify-end menu">
+   <button  mat-button [matMenuTriggerFor]="menu">
+     <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+   </button>
+   <mat-menu #menu="matMenu">
+     <button routerLink="home" mat-menu-item>
+       <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+       Inicio
+     </button>
+     <button  routerLink="disciple-list" mat-menu-item>
+       <mat-icon aria-hidden="false" aria-label="Example home icon">list</mat-icon>
+       Lista de Discipulos
+     </button>
+     <button  routerLink="visitor" mat-menu-item>
+       <mat-icon aria-hidden="false" aria-label="Example home icon">perm_identity</mat-icon>
+       Visitantes
+     </button>
+     <button  routerLink="visitor-list" mat-menu-item>
+       <mat-icon aria-hidden="false" aria-label="Example home icon">list</mat-icon>
+       Lista de Visitantes
+     </button>
+<!--     <button  *ngIf="isAdmin()" routerLink="disciple-list" mat-menu-item>-->
+<!--       <mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon>-->
+<!--       Configurações-->
+<!--     </button>-->
+     <button (click)="logout()" routerLink="login" mat-menu-item>
+       <mat-icon aria-hidden="false" aria-label="Example home icon">exit_to_app</mat-icon>
+       Sair
+     </button>
+
+   </mat-menu>
+ </div>
 

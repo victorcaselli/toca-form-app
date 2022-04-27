@@ -70,7 +70,7 @@ export class DiscipleListComponent implements OnInit {
         this.loadingData = true;
         this._discipleService.deleteById(id).subscribe(() => {
           this.getAllDisciples();
-          this.loadingData = false;
+
         });
 
         this._changeDetectorRef.markForCheck();

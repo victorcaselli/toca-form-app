@@ -1,35 +1,43 @@
 <div class="list w-full flex justify-center flex-col">
   <div class="title w-full flex justify-center">
-      <p class="title-text text-sm">Lista de Adolescentes</p>
+    <p class="title-text text-sm">Lista de Visitantes</p>
   </div>
 
+<!--  <mat-form-field class="example-form-field" appearance="fill">-->
+<!--    <mat-label>PESQUISAR POR NOME</mat-label>-->
+<!--    <input (change)="getAllvisitors()" matInput type="text" [(ngModel)]="searchData">-->
+<!--    <button *ngIf="searchData" matSuffix mat-icon-button aria-label="Clear" (click)="searchData=''">-->
+<!--      <mat-icon>close</mat-icon>-->
+<!--    </button>-->
+<!--  </mat-form-field>-->
+  <!--  <mat-form-field appearance="fill">-->
+  <!--    <mat-label>Paramêtro de pesquisa</mat-label>-->
+  <!--    <mat-select  *ngFor="let param of searchParams" [(ngModel)]="params">-->
+  <!--      <mat-option  [value]="param.code">-->
+  <!--        {{param.text}}-->
+  <!--      </mat-option>-->
+  <!--    </mat-select>-->
+  <!--  </mat-form-field>-->
   <mat-form-field class="example-form-field" appearance="fill">
     <mat-label>PESQUISAR POR NOME</mat-label>
-    <input (change)="getAllDisciples()" matInput type="text" [(ngModel)]="searchData">
+    <input (change)="getAllVisitors()" matInput type="text" [(ngModel)]="searchData">
     <button *ngIf="searchData" matSuffix mat-icon-button aria-label="Clear" (click)="searchData=''">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-<!--  <mat-form-field appearance="fill">-->
-<!--    <mat-label>Paramêtro de pesquisa</mat-label>-->
-<!--    <mat-select  *ngFor="let param of searchParams" [(ngModel)]="params">-->
-<!--      <mat-option  [value]="param.code">-->
-<!--        {{param.text}}-->
-<!--      </mat-option>-->
-<!--    </mat-select>-->
-<!--  </mat-form-field>-->
+
 
   <div *ngIf="loadingData" class="flex justify-center mt-10 h-screen items-top">
     <simple-spinner></simple-spinner>
   </div>
 
-  <div *ngIf="disciples?.length === 0" class="w-full text-center mt-20">
-      <p>Não há adolescentes salvos</p>
+  <div *ngIf="visitors?.length === 0" class="w-full text-center mt-20">
+    <p>Não há visitantes salvos</p>
   </div>
 
-  <div class="mt-10"  *ngIf="!loadingData">
-    <mat-accordion  *ngFor="let disciple of disciples">
-      <mat-expansion-panel  (opened)="panelOpenState = true"
+  <div class="mt-10" *ngIf="!loadingData">
+    <mat-accordion *ngFor="let disciple of visitors">
+      <mat-expansion-panel (opened)="panelOpenState = true"
                            (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title class="flex justify-start w-2/4 panel-name">
@@ -52,51 +60,26 @@
               <p>{{disciple.birthDate | date: 'dd/MM/yyyy'}}</p>
             </div>
             <div class="item">
-              <mat-label>Endereço</mat-label>
-              <p>{{disciple.address}}</p>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="item">
-              <mat-label>Bairro</mat-label>
-              <p>{{disciple.district}}</p>
-            </div>
-
-
-
-            <div class="item">
-              <mat-label>Igreja</mat-label>
-              <p>{{disciple?.churchStatus}}</p>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="item">
-              <mat-label>Batismo</mat-label>
-              <p>{{disciple?.christeningStatus}}</p>
-            </div>
-            <div class="item">
-              <mat-label>Como conheceu a toca: </mat-label>
-              <p>{{disciple.details}}</p>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="item">
-              <mat-label>Decisão</mat-label>
-              <p>{{disciple?.decisionType}}</p>
+              <mat-label>Como chegou aqui? </mat-label>
+              <p>{{disciple.visitorType}}</p>
             </div>
           </div>
 
         </div>
         <div class="flex justify-center">
-          <button (click)="deleteById(disciple.id)" mat-button>
+          <button class="flex content-center" (click)="deleteById(disciple.id)" mat-button>
             <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
             Deletar
           </button>
-          <button (click)="edit(disciple)" mat-button>
+          <button class="flex content-center" (click)="generateDisciple(disciple.id)" mat-button>
             <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
-            Editar
+            Gerar discipulo
           </button>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+  <spinner-loading *ngIf="loading"></spinner-loading>
 
 
 </div>
