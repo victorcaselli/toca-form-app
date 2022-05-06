@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(
   ): void {
-    console.log(this._authService.getRoles());
+
   }
 
   public hiddenMenu(): boolean{
